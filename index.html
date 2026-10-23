@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة النخبة | تنظيم الدراسة، الخطط التفاعلية، وملخصات الباك والبيام</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #e0e7ff;
+      --secondary: #0ea5e9;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #0f172a;
+      --gray: #64748b;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --card: #ffffff;
+      --radius: 16px;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: var(--dark);
+      line-height: 1.6;
+      padding-bottom: 95px;
+    }
+
+    /* Top Countdown & Sync Bar */
+    .top-bar {
+      background: #090d16;
+      color: #e2e8f0;
+      padding: 0.55rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .top-bar-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .countdown-pill {
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fcd34d;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .sync-box {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .sync-id-badge {
+      background: rgba(79, 70, 229, 0.3);
+      border: 1px solid #818cf8;
+      color: #fff;
+      padding: 0.15rem 0.6rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .sync-btn {
+      background: #334155;
+      color: #fff;
+      border: none;
+      padding: 0.22rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .sync-btn:hover {
+      background: var(--primary);
+    }
+
+    /* Hero & Main Navigation */
+    header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 55%, #4338ca 100%);
+      color: white;
+      padding: 1.4rem 1rem 2.8rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-logo span {
+      background: linear-gradient(90deg, #38bdf8, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.5rem 0.95rem;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-tab-btn:hover, .nav-tab-btn.active {
+      background: white;
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-box {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-box h1 {
+      font-size: clamp(1.5rem, 3.6vw, 2.35rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-box p {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .vip-quick-bar {
+      max-width: 580px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      padding: 0.45rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .vip-quick-bar input {
+      flex: 1;
+      border: none;
+      background: white;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-align: center;
+      outline: none;
+      color: var(--dark);
+      letter-spacing: 1px;
+    }
+
+    .vip-quick-bar button {
+      background: linear-gradient(135deg, var(--warning), #d97706);
+      color: white;
+      border: none;
+      padding: 0 1.35rem;
+      border-radius: 10px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    /* Main Content Container */
+    .container {
+      max-width: 1320px;
+      margin: -1.6rem auto 2rem;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    /* Curriculum Filter Box */
+    .filter-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .stage-Row {
+      display: flex;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+      overflow-x: auto;
+    }
+
+    .stage-pill {
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      background: #f1f5f9;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--gray);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .stage-pill.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-color: var(--primary);
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .filter-item label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--gray);
+      margin-bottom: 0.3rem;
+    }
+
+    .filter-item select,
+    .filter-item input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #f8fafc;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--dark);
+      outline: none;
+    }
+
+    .filter-item select:focus,
+    .filter-item input:focus {
+      border-color: var(--primary);
+      background: white;
+    }
+
+    /* Study Plans & Periods Cards */
+    .plan-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .plan-header {
+      background: linear-gradient(135deg, #f8fafc, #eff6ff);
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .plan-tags {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.45rem;
+    }
+
+    .tag {
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .tag.primary { background: var(--primary-light); color: var(--primary-dark); }
+    .tag.info { background: #e0f2fe; color: #0369a1; }
+    .tag.warn { background: #fef3c7; color: #b45309; }
+    .tag.success { background: #d1fae5; color: #065f46; }
+
+    .progress-wrap {
+      min-width: 240px;
+      background: white;
+      padding: 0.65rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 0.35rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--success));
+      transition: width 0.35s ease;
+    }
+
+    .periods-container {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .period-box {
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+
+    .period-box.locked {
+      border-color: #cbd5e1;
+      background: #f1f5f9;
+    }
+
+    .period-top {
+      padding: 1rem 1.25rem;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .period-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .period-body {
+      padding: 1.15rem 1.25rem;
+    }
+
+    .trap-alert {
+      background: #fffbeb;
+      border-right: 4px solid var(--warning);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 1rem;
+    }
+
+    .task-row {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.65rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      transition: 0.2s;
+    }
+
+    .task-row.completed {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .task-check {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--success);
+      cursor: pointer;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      border: none;
+      padding: 0.55rem 1rem;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: 0.84rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-success { background: var(--success); color: white; }
+    .btn-warning { background: var(--warning); color: white; }
+    .btn-danger  { background: var(--danger); color: white; }
+    .btn-info    { background: var(--secondary); color: white; }
+    .btn-outline { background: white; border: 1.5px solid var(--border); color: var(--dark); }
+
+    /* Summaries Store Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-img {
+      height: 200px;
+      background: #e2e8f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-badges {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      left: 10px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .preview-btn {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .card-body {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Smart Focus Room Split Layout */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .video-frame-box {
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      position: relative;
+    }
+
+    .video-frame-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .pomodoro-box {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .timer-digits {
+      font-size: 3.1rem;
+      font-weight: 900;
+      font-family: monospace;
+      letter-spacing: 2px;
+      margin: 0.4rem 0;
+      color: #38bdf8;
+    }
+
+    /* Spaced Repetition Tracker Table */
+    .tracker-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .tracker-table th, .tracker-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .tracker-table th {
+      background: #f8fafc;
+      color: var(--primary-dark);
+      font-weight: 900;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: white;
+      width: 100%;
+      max-width: 560px;
+      border-radius: 20px;
+      overflow: hidden;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    }
+
+    .modal-header {
+      padding: 1.1rem 1.4rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 1.35rem;
+      overflow-y: auto;
+    }
+
+    .form-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    /* Strict Chat Widget */
+    .chat-fab {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 0.8rem 1.3rem;
+      font-weight: 900;
+      font-size: 0.92rem;
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.45);
+      cursor: pointer;
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chat-widget {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      width: 350px;
+      max-width: calc(100vw - 32px);
+      height: 470px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28);
+      border: 1px solid var(--border);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1600;
+    }
+
+    .chat-widget.active {
+      display: flex;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+    }
+
+    .chat-rules-bar {
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 0.73rem;
+      font-weight: 800;
+      padding: 0.35rem 0.7rem;
+      text-align: center;
+      border-bottom: 1px solid #fde68a;
+    }
+
+    .chat-messages {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 0.85rem;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .msg-bubble {
+      max-width: 82%;
+      padding: 0.5rem 0.8rem;
+      border-radius: 13px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      word-wrap: break-word;
+    }
+
+    .msg-client {
+      align-self: flex-start;
+      background: var(--primary);
+      color: white;
+      border-bottom-right-radius: 3px;
+    }
+
+    .msg-admin {
+      align-self: flex-end;
+      background: #e2e8f0;
+      color: var(--dark);
+      border-bottom-left-radius: 3px;
+    }
+
+    .chat-footer {
+      padding: 0.7rem;
+      background: white;
+      border-top: 1px solid var(--border);
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      z-index: 3000;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+      .vip-quick-bar {
+        flex-direction: column;
+      }
+      .vip-quick-bar button {
+        padding: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- Top Exam Countdown & Cloud Sync ID Bar -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="countdown-pill" id="exam-countdown">
+        ⏳ العد التنازلي للامتحانات الرسمية (BAC / BEM): جاري الحساب...
+      </div>
+      <div class="sync-box">
+        <span>🆔 كود حفظ محفظتك وتقدمك:</span>
+        <span class="sync-id-badge" id="my-sync-id" onclick="copySyncId()" title="اضغط لنسخ كود محفظتك">...</span>
+        <button class="sync-btn" onclick="openRestoreSyncModal()">🔄 استرداد محفظتي في جهاز آخر</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo" onclick="switchMainView('planner'); return false;">
+        🎯 <span>منصة النخبة للتنظيم والتفوق</span>
+      </a>
+
+      <nav class="main-nav">
+        <button class="nav-tab-btn active" data-view="planner" onclick="switchMainView('planner')">
+          📅 خطط التنظيم والفترات
+        </button>
+        <button class="nav-tab-btn" data-view="focus" onclick="switchMainView('focus')">
+          🎧 غرفة التركيز والمؤقت
+        </button>
+        <button class="nav-tab-btn" data-view="memorize" onclick="switchMainView('memorize')">
+          🧠 تتبع الحفظ والجدول
+        </button>
+        <button class="nav-tab-btn" data-view="calculator" onclick="switchMainView('calculator')">
+          🧮 حاسبة المعدل (BAC/BEM)
+        </button>
+        <button class="nav-tab-btn" data-view="store" onclick="switchMainView('store')">
+          📚 متجر الملخصات (<span id="store-count-badge">0</span>)
+        </button>
+        <button class="nav-tab-btn" data-view="purchases" onclick="switchMainView('purchases')">
+          🔓 مكتبتي ومشترياتي (<span id="unlocked-count-badge">0</span>)
+        </button>
+      </nav>
+    </div>
+
+    <div class="hero-box">
+      <h1>نظم دراستك خطوة بخطوة: دروس، تمارين، حلول مشروطة، وملخصات شاملة 🇩🇿</h1>
+      <p>جرب الفترة الأولى مجاناً في كل خطة! وافتح باقي الفترات أو الملخصات فوراً بكود التفعيل أو وصل الدفع</p>
+
+      <div class="vip-quick-bar">
+        <input type="text" id="global-vip-code" placeholder="🔑 أدخل كود التفعيل الفوري هنا (يفتح الخطة أو الملخص فوراً)">
+        <button onclick="redeemVipCodeGlobal()">تفعيل الفوري ⚡</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SHARED CURRICULUM FILTER PANEL (Used in Planner & Store) -->
+    <div id="shared-filter-card" class="filter-card">
+      <div class="stage-Row">
+        <div class="stage-pill active" data-stage="ALL" onclick="selectStage('ALL')">🌟 جميع الأطوار والباقات</div>
+        <div class="stage-pill" data-stage="الطور الثانوي" onclick="selectStage('الطور الثانوي')">🎓 الطور الثانوي (1، 2، 3 ثانوي / BAC)</div>
+        <div class="stage-pill" data-stage="الطور المتوسط" onclick="selectStage('الطور المتوسط')">📘 الطور المتوسط (1، 2، 3، 4 متوسط / BEM)</div>
+      </div>
+
+      <div class="filters-grid">
+        <div class="filter-item">
+          <label>🔎 بحث سريع</label>
+          <input type="text" id="f-search" placeholder="ابحث بعنوان الخطة، الدرس، أو الملخص..." oninput="refreshCurrentView()">
+        </div>
+
+        <div class="filter-item">
+          <label>📅 السنة الدراسية</label>
+          <select id="f-year" onchange="onYearChange()"></select>
+        </div>
+
+        <div class="filter-item" id="f-stream-wrap">
+          <label>🧭 الشعبة / الجذع (كاملة)</label>
+          <select id="f-stream" onchange="onStreamChange()"></select>
+        </div>
+
+        <div class="filter-item">
+          <label>📖 المادة الدراسية</label>
+          <select id="f-subject" onchange="refreshCurrentView()"></select>
+        </div>
+
+        <div class="filter-item">
+          <label>🗂️ الفصل / نوع الخطة</label>
+          <select id="f-term" onchange="refreshCurrentView()">
+            <option value="ALL">جميع الفصول والخطط</option>
+            <option value="الفصل الأول">الفصل الأول</option>
+            <option value="الفصل الثاني">الفصل الثاني</option>
+            <option value="الفصل الثالث">الفصل الثالث</option>
+            <option value="خطة المراجعة النهائية الشاملة">خطة المراجعة النهائية الشاملة</option>
+            <option value="خطة الإنقاذ المكثفة للمتأخرين">خطة الإنقاذ المكثفة للمتأخرين</option>
+            <option value="باقة شاملة (Bundle)">باقة شاملة (Bundle)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: INTERACTIVE STUDY PLANNER & PERIODS -->
+    <section id="view-planner" class="view-section active">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <h2 id="planner-heading" style="font-size:1.3rem; font-weight:900;">📅 خطط تنظيم العمل والفترات الدراسية</h2>
+        <button class="btn btn-outline" onclick="resetFilters()">🔄 عرض كل الخطط</button>
+      </div>
+      <div id="plans-container"></div>
+    </section>
+
+    <!-- VIEW 2: SMART FOCUS ROOM (Embedded Player + Pomodoro + Notes) -->
+    <section id="view-focus" class="view-section">
+      <div class="filter-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <h2 style="font-size:1.3rem; font-weight:900;">🎧 غرفة التركيز والدراسة بدون تشتيت</h2>
+          <span style="font-size:0.85rem; color:var(--gray); font-weight:700;">شاهد الدرس داخل الموقع مع مؤقت بومودورو وكتابة ملاحظاتك</span>
+        </div>
+
+        <div class="focus-grid">
+          <!-- Left: Embedded Video & PDF -->
+          <div>
+            <div class="video-frame-box" id="focus-video-container">
+              <iframe id="focus-youtube-iframe" src="https://www.youtube.com/embed/jfKfPfyJRdk" allowfullscreen></iframe>
+            </div>
+
+            <div style="margin-top:0.85rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <input type="text" id="custom-yt-url" placeholder="الصق أي رابط يوتيوب هنا لفتحه داخل غرفة التركيز بدون إعلانات أو تشتيت..." style="flex:1; padding:0.65rem 0.9rem; border-radius:10px; border:1.5px solid var(--border); font-weight:700;">
+              <button class="btn btn-primary" onclick="loadCustomYoutubeInFocus()">▶️ تشغيل الدرس</button>
+            </div>
+
+            <div id="focus-task-details" style="margin-top:1rem; padding:1rem; background:#f8fafc; border-radius:12px; border:1px solid var(--border);">
+              <strong id="focus-current-title" style="color:var(--primary-dark);">💡 نصيحة: يمكنك الضغط على زر "🎥 فتح في غرفة التركيز" من أي فترة دراسية!</strong>
+              <div id="focus-current-links" style="margin-top:0.6rem; display:flex; gap:0.5rem; flex-wrap:wrap;"></div>
+            </div>
+          </div>
+
+          <!-- Right: Pomodoro Timer & Persistent Notes -->
+          <div>
+            <div class="pomodoro-box">
+              <div style="font-weight:800; font-size:0.9rem; color:#cbd5e1;" id="pomo-mode-label">🔥 وضع الدراسة والتركيز (50 دقيقة)</div>
+              <div class="timer-digits" id="pomo-display">50:00</div>
+              <div style="display:flex; justify-content:center; gap:0.5rem; flex-wrap:wrap; margin-top:0.6rem;">
+                <button class="btn btn-success" onclick="startPomodoro()">▶️ ابدأ</button>
+                <button class="btn btn-warning" onclick="pausePomodoro()">⏸️ إيقاف مؤقت</button>
+                <button class="btn btn-outline" style="color:var(--dark);" onclick="switchPomodoroMode(50)">50 د دراسة</button>
+                <button class="btn btn-outline" style="color:var(--dark);" onclick="switchPomodoroMode(10)">10 د راحة</button>
+              </div>
+            </div>
+
+            <div style="background:#f8fafc; padding:1.1rem; border-radius:14px; border:1px solid var(--border);">
+              <label style="font-weight:900; font-size:0.92rem; display:block; margin-bottom:0.45rem;">📝 مفكرتي السريعة (تُحفظ تلقائياً في جهازك):</label>
+              <textarea id="student-notes-area" rows="7" placeholder="اكتب هنا القوانين المهمة، الأفكار التي استخلصتها من الفيديو، أو الأسئلة التي تريد مراجعتها..." style="width:100%; padding:0.75rem; border-radius:10px; border:1.5px solid var(--border); font-weight:600; font-size:0.88rem; outline:none;" oninput="saveStudentNotes()"></textarea>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem;">
+                <span style="font-size:0.76rem; color:var(--success); font-weight:800;">✅ الحفظ التلقائي مفعل</span>
+                <button class="btn btn-danger" style="padding:0.3rem 0.7rem; font-size:0.75rem;" onclick="clearStudentNotes()">مسح المفكرة</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: SPACED REPETITION MEMORIZATION TRACKER & WEEKLY SCHEDULE GENERATOR -->
+    <section id="view-memorize" class="view-section">
+      <div class="filter-card">
+        <h2 style="font-size:1.25rem; font-weight:900; margin-bottom:0.4rem;">🧠 جدول تتبع الحفظ والمراجعة المتباعدة (ثلاثية التثبيت)</h2>
+        <p style="font-size:0.86rem; color:var(--gray); margin-bottom:1rem; font-weight:700;">
+          أضف الوحدات، السور، المصطلحات، الشخصيات، التواريخ أو المقالات الفلسفية وعلّم على المراحل الثلاث حتى تثبت في ذاكرتك 100%:
+        </p>
+
+        <form onsubmit="addMemorizeItem(event)" style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1.2rem;">
+          <select id="mem-subject" style="padding:0.65rem; border-radius:10px; border:1.5px solid var(--border); font-weight:800;">
+            <option value="العلوم الإسلامية">العلوم الإسلامية</option>
+            <option value="التاريخ والجغرافيا">التاريخ والجغرافيا</option>
+            <option value="الفلسفة">الفلسفة</option>
+            <option value="اللغة العربية">اللغة العربية</option>
+            <option value="اللغة الفرنسية / الإنجليزية">اللغة الفرنسية / الإنجليزية</option>
+            <option value="التربية المدنية">التربية المدنية</option>
+            <option value="قوانين ومفاهيم علمية">قوانين ومفاهيم علمية</option>
+          </select>
+          <input type="text" id="mem-title" required placeholder="مثال: مصطلحات الحرب الباردة / مقالة الشعور واللاشعور / العقيدة الإسلامية..." style="flex:1; min-width:220px; padding:0.65rem 0.9rem; border-radius:10px; border:1.5px solid var(--border); font-weight:700;">
+          <button type="submit" class="btn btn-primary">➕ إضافة لجدول الحفظ</button>
+        </form>
+
+        <div style="overflow-x:auto;">
+          <table class="tracker-table">
+            <thead>
+              <tr>
+                <th>المادة</th>
+                <th>العنصر / الدرس المطلوب حفظه</th>
+                <th>1️⃣ حفظ أولي</th>
+                <th>2️⃣ مراجعة ثانية</th>
+                <th>3️⃣ تثبيت نهائي 100%</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="memorize-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Weekly Schedule Generator (Regular vs Free Candidate) -->
+      <div class="filter-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
+          <div>
+            <h2 style="font-size:1.25rem; font-weight:900;">🗓️ مولّد البرنامج الأسبوعي الذكي</h2>
+            <p style="font-size:0.85rem; color:var(--gray); font-weight:700;">اختر وضعيتك الدراسية ليقترح عليك الموقع التوزيع المثالي لساعات الدراسة:</p>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="renderWeeklySchedule('regular')">🎒 تلميذ نظامي (يدرس في المؤسسة)</button>
+            <button class="btn btn-info" onclick="renderWeeklySchedule('free')">🏆 مترشح حر / عطلة مكثفة</button>
+          </div>
+        </div>
+        <div id="weekly-schedule-output" style="overflow-x:auto;"></div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: OFFICIAL BAC & BEM AVERAGE CALCULATOR -->
+    <section id="view-calculator" class="view-section">
+      <div class="filter-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.2rem;">
+          <div>
+            <h2 style="font-size:1.3rem; font-weight:900;">🧮 حاسبة معدل البكالوريا والبيام الرسمية (بالمعاملات الدقيقة)</h2>
+            <p style="font-size:0.86rem; color:var(--gray); font-weight:700;">اختر شعبتك وأدخل نقاطك التوقعية ليحسب لك الموقع معدلك النهائي بدقة:</p>
+          </div>
+
+          <select id="calc-stream-select" onchange="initCalculatorTable()" style="padding:0.7rem 1rem; border-radius:10px; border:2px solid var(--primary); font-weight:900; font-size:0.92rem;">
+            <option value="BAC_SCI">بكالوريا: شعبة علوم تجريبية</option>
+            <option value="BAC_MATH">بكالوريا: شعبة رياضيات</option>
+            <option value="BAC_TM">بكالوريا: شعبة تقني رياضي (جميع الهنادس)</option>
+            <option value="BAC_GE">بكالوريا: شعبة تسيير واقتصاد</option>
+            <option value="BAC_LP">بكالوريا: شعبة آداب وفلسفة</option>
+            <option value="BAC_LE">بكالوريا: شعبة لغات أجنبية</option>
+            <option value="BEM">شهادة التعليم المتوسط (بيام BEM)</option>
+          </select>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="tracker-table">
+            <thead>
+              <tr>
+                <th>المادة الدراسية</th>
+                <th>المعامل الرسمي</th>
+                <th>النقطة المتوقعة (من 20)</th>
+                <th>المجموع (النقطة × المعامل)</th>
+              </tr>
+            </thead>
+            <tbody id="calc-tbody"></tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:1.25rem; background:linear-gradient(135deg, #1e1b4b, #312e81); color:white; padding:1.25rem 1.5rem; border-radius:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-size:0.88rem; color:#cbd5e1; font-weight:700;">مجموع المعاملات: <strong id="calc-total-coef" style="color:white;">0</strong> | مجموع النقاط: <strong id="calc-total-pts" style="color:white;">0</strong></div>
+            <div id="calc-motivation" style="font-size:0.95rem; font-weight:800; color:#fcd34d; margin-top:0.25rem;">أدخل نقاطك لمعرفة التقدير</div>
+          </div>
+          <div style="text-align:center;">
+            <span style="font-size:0.8rem; display:block; color:#cbd5e1;">المعدل التوقعي النهائي:</span>
+            <strong id="calc-final-avg" style="font-size:2.2rem; font-weight:900; color:#38bdf8;">00.00 / 20</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: STANDALONE SUMMARIES & BUNDLES STORE -->
+    <section id="view-store" class="view-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <h2 id="store-heading" style="font-size:1.3rem; font-weight:900;">📚 متجر الملخصات والباقات المستقلة</h2>
+        <button class="btn btn-outline" onclick="resetFilters()">🔄 إظهار الكل</button>
+      </div>
+      <div id="store-grid" class="products-grid"></div>
+    </section>
+
+    <!-- VIEW 6: STUDENT LIBRARY & PURCHASES -->
+    <section id="view-purchases" class="view-section">
+      <div class="filter-card">
+        <h2 style="font-size:1.3rem; font-weight:900; margin-bottom:1rem;">🔓 مكتبتي الخاصة (الخطط والملخصات المفتوحة وطلباتي)</h2>
+        <div id="my-library-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CONDITIONAL SOLUTION PLEDGE MODAL (Anti-Self-Cheating) -->
+  <div id="solution-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width:460px; text-align:center;">
+      <div class="modal-header">
+        <h3>🛑 تنبيه تربوي قبل فتح الحل النموذجي</h3>
+        <button class="btn btn-outline" style="padding:0.2rem 0.6rem;" onclick="closeModal('solution-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="font-size:3rem; margin-bottom:0.5rem;">✍️</div>
+        <h4 style="font-weight:900; margin-bottom:0.6rem; color:var(--primary-dark);">هل حاولت في التمرين بيدك على الورقة أولاً؟</h4>
+        <p style="font-size:0.88rem; color:var(--gray); font-weight:700; margin-bottom:1.2rem;">
+          قراءة الحل مباشرة دون محاولة كتابية لمدة 15 دقيقة على الأقل تعطيك "وهْم الفهم" وتضرك يوم الامتحان الرسمي.
+        </p>
+        <label style="display:flex; align-items:center; justify-content:center; gap:0.5rem; font-weight:800; font-size:0.88rem; background:#f1f5f9; padding:0.75rem; border-radius:10px; cursor:pointer; margin-bottom:1rem;">
+          <input type="checkbox" id="pledge-checkbox" style="width:18px; height:18px;">
+          <span>أتعهد أنني حاولت في التمارين بنفسي قبل رؤية الحل</span>
+        </label>
+        <button class="btn btn-success" style="width:100%; padding:0.85rem; font-size:0.95rem;" onclick="confirmOpenSolution()">
+          ✅ فتح ملف الحل النموذجي الآن
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FREE PREVIEW MODAL -->
+  <div id="preview-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 id="preview-title">👁️ معاينة مجانية</h3>
+        <button class="btn btn-outline" style="padding:0.2rem 0.6rem;" onclick="closeModal('preview-modal')">✕</button>
+      </div>
+      <div class="modal-body" id="preview-body" style="text-align:center;"></div>
+    </div>
+  </div>
+
+  <!-- PURCHASE / VIP UNLOCK MODAL (Works for both Study Plans & Summaries) -->
+  <div id="buy-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="buy-modal-header">🔓 فتح وتفعيل المحتوى</h3>
+        <button class="btn btn-outline" style="padding:0.2rem 0.6rem;" onclick="closeModal('buy-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:#f8fafc; padding:0.8rem 1rem; border-radius:12px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div>
+            <div id="buy-item-title" style="font-weight:900; font-size:0.95rem;"></div>
+            <div id="buy-item-sub" style="font-size:0.78rem; color:var(--gray); font-weight:700;"></div>
+          </div>
+          <strong id="buy-item-price" style="font-size:1.2rem; color:var(--primary-dark); font-weight:900;"></strong>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; background:#f1f5f9; padding:0.35rem; border-radius:11px; margin-bottom:1.1rem;">
+          <button type="button" id="tab-btn-receipt" class="btn btn-primary" onclick="toggleBuyMethod('receipt')">🧾 الدفع ورفع الوصل</button>
+          <button type="button" id="tab-btn-vip" class="btn btn-outline" onclick="toggleBuyMethod('vip')">🔑 لدي كود تفعيل VIP</button>
+        </div>
+
+        <!-- Receipt Form -->
+        <div id="buy-receipt-pane">
+          <div style="background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:12px; padding:0.9rem; margin-bottom:1rem; font-size:0.85rem;">
+            <div style="font-weight:900; color:var(--primary-dark); margin-bottom:0.3rem;">💳 حسابات الدفع (BaridiMob / CCP):</div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+              <span><strong>CCP:</strong> <span id="pay-ccp-text">يرجى مراجعة الأدمن</span></span>
+              <button type="button" class="sync-btn" onclick="copyTextById('pay-ccp-text')">نسخ</button>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+              <span><strong>RIP:</strong> <span id="pay-rip-text">00799999000000000000</span></span>
+              <button type="button" class="sync-btn" onclick="copyTextById('pay-rip-text')">نسخ</button>
+            </div>
+            <div id="pay-note-text" style="font-size:0.78rem; color:#1e40af; font-weight:700; margin-top:0.3rem;">
+              ارفق لقطة شاشة لوصل الدفع وسيتم فتح الخطة أو الملخص في حسابك فور التأكيد.
+            </div>
+          </div>
+
+          <form id="order-form" onsubmit="submitOrderForm(event)">
+            <div class="form-group">
+              <label>👤 الاسم واللقب الكامل *</label>
+              <input type="text" id="o-name" required placeholder="اكتب اسمك ولقبك">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.7rem;">
+              <div class="form-group">
+                <label>📱 رقم الهاتف *</label>
+                <input type="tel" id="o-phone" required placeholder="05 / 06 / 07 ...">
+              </div>
+              <div class="form-group">
+                <label>📍 الولاية (58 ولاية) *</label>
+                <select id="o-wilaya" required></select>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.7rem;">
+              <div class="form-group">
+                <label>📦 نوع الاستلام</label>
+                <select id="o-delivery" onchange="recalcOrderTotal()">
+                  <option value="تفعيل رقمي فوري في الموقع">تفعيل رقمي في الموقع (PDF / خطة)</option>
+                  <option value="نسخة ورقية مطبوعة للتوصيل">نسخة ورقية مطبوعة + تفعيل رقمي</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>🔢 الكمية (المتاح: <span id="o-max-stock">1</span>)</label>
+                <input type="number" id="o-qty" value="1" min="1" max="1" onchange="recalcOrderTotal()" oninput="recalcOrderTotal()">
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline" style="width:100%; margin-bottom:0.8rem; border-style:dashed; color:var(--primary-dark);" onclick="captureGPS()">
+              📍 إرسال موقعي الجغرافي (GPS) لتسهيل التوصيل (اختياري)
+            </button>
+            <div id="gps-feedback" style="display:none; text-align:center; font-size:0.8rem; font-weight:800; color:var(--success); margin-bottom:0.7rem;"></div>
+
+            <div class="form-group">
+              <label>📸 إرفاق صورة وصل الدفع (Screenshot بريدي موب أو البريد) *</label>
+              <input type="file" id="o-receipt" accept="image/*" required style="background:#f8fafc; padding:0.6rem;">
+            </div>
+
+            <div style="background:#f1f5f9; padding:0.7rem 1rem; border-radius:10px; display:flex; justify-content:space-between; font-weight:900; margin-bottom:0.95rem;">
+              <span>المبلغ الإجمالي:</span>
+              <span id="o-total-price" style="color:var(--primary-dark); font-size:1.15rem;">0 د.ج</span>
+            </div>
+
+            <button type="submit" id="o-submit-btn" class="btn btn-primary" style="width:100%; padding:0.85rem; font-size:0.95rem;">
+              ✅ إرسال الوصل وتأكيد الطلب
+            </button>
+          </form>
+        </div>
+
+        <!-- Instant VIP Code Pane -->
+        <div id="buy-vip-pane" style="display:none; text-align:center; padding:0.8rem 0;">
+          <p style="font-size:0.88rem; color:var(--gray); font-weight:700; margin-bottom:1rem;">
+            أدخل كود التفعيل السري لفتح هذه الخطة أو الملخص فوراً (الكود صالح لمرة واحدة ويحترق تلقائياً بعد التفعيل):
+          </p>
+          <div class="form-group">
+            <input type="text" id="modal-vip-input" placeholder="مثال: PLAN-8492" style="text-align:center; font-size:1.1rem; font-weight:900; letter-spacing:1.5px;">
+          </div>
+          <button type="button" class="btn btn-success" style="width:100%; padding:0.85rem; font-size:0.95rem;" onclick="redeemVipFromModal()">
+            🔓 تفعيل وفتح المحتوى الآن
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTORE CLOUD SYNC MODAL -->
+  <div id="sync-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width:440px; text-align:center;">
+      <div class="modal-header">
+        <h3>🔄 استرداد محفظتي وتقدمي الدراسي</h3>
+        <button class="btn btn-outline" style="padding:0.2rem 0.6rem;" onclick="closeModal('sync-modal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.86rem; color:var(--gray); font-weight:700; margin-bottom:1rem;">
+          إذا قمت بتغيير هاتفك أو فتحت من حاسوبك، أدخل كود محفظتك السابق لاسترجاع جميع الخطط والملخصات المفتوحة ونسبة تقدمك:
+        </p>
+        <div class="form-group">
+          <input type="text" id="restore-sync-input" placeholder="مثال: DZ-9A8F2C" style="text-align:center; font-weight:900; font-family:monospace; font-size:1.1rem;">
+        </div>
+        <button class="btn btn-primary" style="width:100%; padding:0.8rem;" onclick="restoreStudentWallet()">
+          ⚡ استرجاع بياناتي الآن
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRICT CHAT WIDGET (20 Chars max, 1 msg initially, 2 per admin reply) -->
+  <button class="chat-fab" onclick="toggleChat()">
+    💬 تواصل مع الأستاذ / الأدمن
+  </button>
+
+  <div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+      <span>💬 الدعم الفني وطلب الأكواد</span>
+      <button onclick="toggleChat()" style="background:none; border:none; color:white; font-weight:900; cursor:pointer;">✕</button>
+    </div>
+    <div class="chat-rules-bar" id="chat-rule-banner">
+      ⚡ حد الرسالة 20 حرفاً (رسالة 1 للبدء، ثم 2 بعد كل رد من الأدمن)
+    </div>
+    <div id="chat-messages" class="chat-messages"></div>
+    <div class="chat-footer">
+      <div id="chat-name-box" style="margin-bottom:0.45rem; display:none;">
+        <input type="text" id="chat-name-input" placeholder="اكتب اسمك أولاً..." style="width:100%; padding:0.4rem 0.65rem; border:1px solid var(--border); border-radius:8px; font-size:0.8rem; font-weight:700;">
+      </div>
+      <form onsubmit="sendStrictChatMessage(event)" style="display:flex; gap:0.4rem; align-items:center;">
+        <input type="text" id="chat-msg-input" maxlength="20" placeholder="رسالتك (أقصى حد 20 حرف)..." oninput="updateChatCounter()" style="flex:1; padding:0.55rem 0.7rem; border:1.5px solid var(--border); border-radius:9px; font-size:0.84rem; font-weight:700; outline:none;">
+        <span id="chat-char-count" style="font-size:0.74rem; font-weight:800; color:var(--gray); min-width:34px; text-align:center;">0/20</span>
+        <button type="submit" id="chat-send-btn" class="btn btn-primary" style="padding:0.55rem 0.85rem;">إرسال</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FIREBASE & APPLICATION SCRIPT -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { 
+      getFirestore, collection, doc, getDoc, setDoc, getDocs, addDoc, updateDoc, deleteDoc, 
+      onSnapshot, query, where, serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyC4rLJ5Qh7ZkqANs7azV_xhalPMu4UjmjQ",
+      authDomain: "aa-3e8b0.firebaseapp.com",
+      projectId: "aa-3e8b0",
+      storageBucket: "aa-3e8b0.firebasestorage.app",
+      messagingSenderId: "435860658327",
+      appId: "1:435860658327:web:94bc4216e93f2382d3b1d2",
+      measurementId: "G-604FGEXLQT"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 1. COMPLETE ALGERIAN CURRICULUM (Every single Year, Stream, Branch & Subject without any omission)
+    const CURRICULUM = {
+      "الطور الثانوي": {
+        "1 ثانوي": {
+          "جذع مشترك علوم وتكنولوجيا": [
+            "الرياضيات", "العلوم الفيزيائية", "علوم الطبيعة والحياة", "التكنولوجيا (إعلام آلي وهندسة)",
+            "اللغة العربية وآدابها", "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "جذع مشترك آداب": [
+            "اللغة العربية وآدابها", "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية",
+            "الرياضيات", "علوم الطبيعة والحياة", "العلوم الفيزيائية", "الإعلام الآلي", "اللغة الأمازيغية"
+          ]
+        },
+        "2 ثانوي": {
+          "شعبة علوم تجريبية": [
+            "علوم الطبيعة والحياة", "العلوم الفيزيائية", "الرياضيات", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة رياضيات": [
+            "الرياضيات", "العلوم الفيزيائية", "علوم الطبيعة والحياة", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة مدنية": [
+            "التكنولوجيا - هندسة مدنية", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة ميكانيكية": [
+            "التكنولوجيا - هندسة ميكانيكية", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة كهربائية": [
+            "التكنولوجيا - هندسة كهربائية", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة الطرائق": [
+            "التكنولوجيا - هندسة الطرائق", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تسيير واقتصاد": [
+            "التسيير المحاسبي والمالي", "الاقتصاد والمناجمنت", "القانون", "الرياضيات",
+            "التاريخ والجغرافيا", "اللغة العربية وآدابها", "العلوم الإسلامية", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة آداب وفلسفة": [
+            "الفلسفة", "اللغة العربية وآدابها", "التاريخ والجغرافيا", "العلوم الإسلامية",
+            "اللغة الفرنسية", "اللغة الإنجليزية", "الرياضيات", "العلوم الفيزيائية والطبيعية", "اللغة الأمازيغية"
+          ],
+          "شعبة لغات أجنبية": [
+            "اللغة العربية وآدابها", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الإسبانية", "اللغة الألمانية", "اللغة الإيطالية",
+            "الفلسفة", "التاريخ والجغرافيا", "العلوم الإسلامية", "الرياضيات", "اللغة الأمازيغية"
+          ]
+        },
+        "3 ثانوي (بكالوريا BAC)": {
+          "شعبة علوم تجريبية": [
+            "علوم الطبيعة والحياة", "العلوم الفيزيائية", "الرياضيات", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "الفلسفة", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة رياضيات": [
+            "الرياضيات", "العلوم الفيزيائية", "علوم الطبيعة والحياة", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "الفلسفة", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة مدنية": [
+            "التكنولوجيا - هندسة مدنية", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "الفلسفة", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة ميكانيكية": [
+            "التكنولوجيا - هندسة ميكانيكية", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "الفلسفة", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة كهربائية": [
+            "التكنولوجيا - هندسة كهربائية", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "الفلسفة", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تقني رياضي - هندسة الطرائق": [
+            "التكنولوجيا - هندسة الطرائق", "الرياضيات", "العلوم الفيزيائية", "اللغة العربية وآدابها",
+            "العلوم الإسلامية", "التاريخ والجغرافيا", "الفلسفة", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة تسيير واقتصاد": [
+            "التسيير المحاسبي والمالي", "الاقتصاد والمناجمنت", "القانون", "الرياضيات",
+            "التاريخ والجغرافيا", "الفلسفة", "اللغة العربية وآدابها", "العلوم الإسلامية", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية"
+          ],
+          "شعبة آداب وفلسفة": [
+            "الفلسفة", "اللغة العربية وآدابها", "التاريخ والجغرافيا", "العلوم الإسلامية",
+            "اللغة الفرنسية", "اللغة الإنجليزية", "الرياضيات", "اللغة الأمازيغية"
+          ],
+          "شعبة لغات أجنبية": [
+            "اللغة العربية وآدابها", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الإسبانية", "اللغة الألمانية", "اللغة الإيطالية",
+            "الفلسفة", "التاريخ والجغرافيا", "العلوم الإسلامية", "الرياضيات", "اللغة الأمازيغية"
+          ]
+        }
+      },
+      "الطور المتوسط": {
+        "1 متوسط": [
+          "الرياضيات", "علوم الطبيعة والحياة", "العلوم الفيزيائية والتكنولوجيا", "اللغة العربية",
+          "التربية الإسلامية", "التاريخ والجغرافيا", "التربية المدنية", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية", "الإعلام الآلي"
+        ],
+        "2 متوسط": [
+          "الرياضيات", "علوم الطبيعة والحياة", "العلوم الفيزيائية والتكنولوجيا", "اللغة العربية",
+          "التربية الإسلامية", "التاريخ والجغرافيا", "التربية المدنية", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية", "الإعلام الآلي"
+        ],
+        "3 متوسط": [
+          "الرياضيات", "علوم الطبيعة والحياة", "العلوم الفيزيائية والتكنولوجيا", "اللغة العربية",
+          "التربية الإسلامية", "التاريخ والجغرافيا", "التربية المدنية", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية", "الإعلام الآلي"
+        ],
+        "4 متوسط (بيام BEM)": [
+          "الرياضيات", "علوم الطبيعة والحياة", "العلوم الفيزيائية والتكنولوجيا", "اللغة العربية",
+          "التربية الإسلامية", "التاريخ والجغرافيا", "التربية المدنية", "اللغة الفرنسية", "اللغة الإنجليزية", "اللغة الأمازيغية", "الإعلام الآلي"
+        ]
+      }
+    };
+
+    // 2. ALL 58 ALGERIAN WILAYAS
+    const WILAYAS_58 = [
+      "01 - أدرار", "02 - الشلف", "03 - الأغواط", "04 - أم البواقي", "05 - باتنة", "06 - بجاية", "07 - بسكرة", "08 - بشار",
+      "09 - البليدة", "10 - البويرة", "11 - تمنراست", "12 - تبسة", "13 - تلمسان", "14 - تيارت", "15 - تيزي وزو", "16 - الجزائر",
+      "17 - الجلفة", "18 - جيجل", "19 - سطيف", "20 - سعيدة", "21 - سكيكدة", "22 - سيدي بلعباس", "23 - عنابة", "24 - قالمة",
+      "25 - قسنطينة", "26 - المدية", "27 - مستغانم", "28 - المسيلة", "29 - معسكر", "30 - ورقلة", "31 - وهران", "32 - البيض",
+      "33 - إليزي", "34 - برج بوعريريج", "35 - بومرداس", "36 - الطارف", "37 - تندوف", "38 - تسمسيلت", "39 - الوادي", "40 - خنشلة",
+      "41 - سوق أهراس", "42 - تيبازة", "43 - ميلة", "44 - عين الدفلى", "45 - النعامة", "46 - عين تموشنت", "47 - غرداية", "48 - غليزان",
+      "49 - تيميمون", "50 - برج باجي مختار", "51 - أولاد جلال", "52 - بني عباس", "53 - عين صالح", "54 - عين قزام", "55 - تقرت",
+      "56 - جانت", "57 - المغير", "58 - المنيعة"
+    ];
+
+    // 3. OFFICIAL BAC & BEM COEFFICIENTS
+    const COEFFICIENTS = {
+      BAC_SCI: [
+        { name: "علوم الطبيعة والحياة", coef: 6 },
+        { name: "العلوم الفيزيائية", coef: 5 },
+        { name: "الرياضيات", coef: 5 },
+        { name: "اللغة العربية وآدابها", coef: 3 },
+        { name: "اللغة الفرنسية", coef: 2 },
+        { name: "اللغة الإنجليزية", coef: 2 },
+        { name: "التاريخ والجغرافيا", coef: 2 },
+        { name: "العلوم الإسلامية", coef: 2 },
+        { name: "الفلسفة", coef: 2 },
+        { name: "التربية البدنية", coef: 1 }
+      ],
+      BAC_MATH: [
+        { name: "الرياضيات", coef: 7 },
+        { name: "العلوم الفيزيائية", coef: 6 },
+        { name: "اللغة العربية وآدابها", coef: 3 },
+        { name: "علوم الطبيعة والحياة", coef: 2 },
+        { name: "اللغة الفرنسية", coef: 2 },
+        { name: "اللغة الإنجليزية", coef: 2 },
+        { name: "التاريخ والجغرافيا", coef: 2 },
+        { name: "العلوم الإسلامية", coef: 2 },
+        { name: "الفلسفة", coef: 2 },
+        { name: "التربية البدنية", coef: 1 }
+      ],
+      BAC_TM: [
+        { name: "التكنولوجيا (الهندسة)", coef: 6 },
+        { name: "الرياضيات", coef: 6 },
+        { name: "العلوم الفيزيائية", coef: 6 },
+        { name: "اللغة العربية وآدابها", coef: 3 },
+        { name: "اللغة الفرنسية", coef: 2 },
+        { name: "اللغة الإنجليزية", coef: 2 },
+        { name: "التاريخ والجغرافيا", coef: 2 },
+        { name: "العلوم الإسلامية", coef: 2 },
+        { name: "الفلسفة", coef: 2 },
+        { name: "التربية البدنية", coef: 1 }
+      ],
+      BAC_GE: [
+        { name: "التسيير المحاسبي والمالي", coef: 6 },
+        { name: "الاقتصاد والمناجمنت", coef: 5 },
+        { name: "الرياضيات", coef: 5 },
+        { name: "التاريخ والجغرافيا", coef: 4 },
+        { name: "اللغة العربية وآدابها", coef: 3 },
+        { name: "القانون", coef: 2 },
+        { name: "اللغة الفرنسية", coef: 2 },
+        { name: "اللغة الإنجليزية", coef: 2 },
+        { name: "العلوم الإسلامية", coef: 2 },
+        { name: "الفلسفة", coef: 2 },
+        { name: "التربية البدنية", coef: 1 }
+      ],
+      BAC_LP: [
+        { name: "اللغة العربية وآدابها", coef: 6 },
+        { name: "الفلسفة", coef: 6 },
+        { name: "التاريخ والجغرافيا", coef: 4 },
+        { name: "اللغة الفرنسية", coef: 3 },
+        { name: "اللغة الإنجليزية", coef: 3 },
+        { name: "العلوم الإسلامية", coef: 2 },
+        { name: "الرياضيات", coef: 2 },
+        { name: "التربية البدنية", coef: 1 }
+      ],
+      BAC_LE: [
+        { name: "اللغة العربية وآدابها", coef: 5 },
+        { name: "اللغة الفرنسية", coef: 5 },
+        { name: "اللغة الإنجليزية", coef: 5 },
+        { name: "اللغة الأجنبية الثالثة (إسبانية/ألمانية/إيطالية)", coef: 4 },
+        { name: "التاريخ والجغرافيا", coef: 2 },
+        { name: "العلوم الإسلامية", coef: 2 },
+        { name: "الفلسفة", coef: 2 },
+        { name: "الرياضيات", coef: 2 },
+        { name: "التربية البدنية", coef: 1 }
+      ],
+      BEM: [
+        { name: "اللغة العربية", coef: 5 },
+        { name: "الرياضيات", coef: 4 },
+        { name: "اللغة الفرنسية", coef: 3 },
+        { name: "التاريخ والجغرافيا", coef: 3 },
+        { name: "علوم الطبيعة والحياة", coef: 2 },
+        { name: "العلوم الفيزيائية والتكنولوجيا", coef: 2 },
+        { name: "اللغة الإنجليزية", coef: 2 },
+        { name: "التربية الإسلامية", coef: 2 },
+        { name: "التربية المدنية", coef: 1 },
+        { name: "التربية البدنية / التشكيلية", coef: 1 }
+      ]
+    };
+
+    // Student Identity, Sync Wallet & Local State
+    let syncId = localStorage.getItem('dz_sync_id');
+    if (!syncId) {
+      syncId = 'DZ-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+      localStorage.setItem('dz_sync_id', syncId);
+    }
+    document.getElementById('my-sync-id').textContent = syncId;
+
+    let sessionId = localStorage.getItem('dz_student_session_id') || ('st_' + syncId);
+    localStorage.setItem('dz_student_session_id', sessionId);
+
+    let studentName = localStorage.getItem('dz_student_name') || '';
+    let unlockedItems = JSON.parse(localStorage.getItem('dz_unlocked_items') || '{}');
+    let completedTasks = JSON.parse(localStorage.getItem('dz_completed_tasks') || '{}');
+    let memorizeList = JSON.parse(localStorage.getItem('dz_memorize_list') || '[]');
+
+    let studyPlans = [];
+    let summariesList = [];
+    let myOrders = [];
+
+    let currentStage = 'ALL';
+    let currentView = 'planner';
+    let activeBuyTarget = null;
+    let pendingSolutionUrl = '';
+    let capturedGpsUrl = '';
+    let chatCanSend = true;
+
+    // Populate 58 Wilayas
+    document.getElementById('o-wilaya').innerHTML = '<option value="">-- اختر ولايتك --</option>' +
+      WILAYAS_58.map(w => `<option value="${w}">${w}</option>`).join('');
+
+    // Exam Countdown Timer (Next June Exam)
+    function startExamCountdown() {
+      const now = new Date();
+      let targetYear = now.getFullYear();
+      let examDate = new Date(targetYear, 5, 7, 8, 0, 0); // June 7
+      if (now > examDate) {
+        examDate = new Date(targetYear + 1, 5, 7, 8, 0, 0);
+      }
+      const diff = examDate - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      document.getElementById('exam-countdown').textContent = `⏳ متبقي على الامتحانات الرسمية (BAC / BEM): ${days} يوم و ${hours} ساعة — استغل كل دقيقة!`;
+    }
+    startExamCountdown();
+
+    // Dynamic Curriculum Filter Logic
+    function initFilterSelects() {
+      const yearSel = document.getElementById('f-year');
+      const streamWrap = document.getElementById('f-stream-wrap');
+
+      let years = [];
+      if (currentStage === 'الطور الثانوي') {
+        years = Object.keys(CURRICULUM["الطور الثانوي"]);
+        streamWrap.style.display = 'block';
+      } else if (currentStage === 'الطور المتوسط') {
+        years = Object.keys(CURRICULUM["الطور المتوسط"]);
+        streamWrap.style.display = 'none';
+      } else {
+        years = [
+          ...Object.keys(CURRICULUM["الطور الثانوي"]),
+          ...Object.keys(CURRICULUM["الطور المتوسط"])
+        ];
+        streamWrap.style.display = 'block';
+      }
+
+      yearSel.innerHTML = '<option value="ALL">جميع السنوات الدراسية</option>' +
+        years.map(y => `<option value="${y}">${y}</option>`).join('');
+
+      populateStreamFilter();
+    }
+
+    function populateStreamFilter() {
+      const yearVal = document.getElementById('f-year').value;
+      const streamSel = document.getElementById('f-stream');
+      const streamWrap = document.getElementById('f-stream-wrap');
+
+      let streams = new Set();
+      if (yearVal !== 'ALL') {
+        if (CURRICULUM["الطور الثانوي"][yearVal]) {
+          streamWrap.style.display = 'block';
+          Object.keys(CURRICULUM["الطور الثانوي"][yearVal]).forEach(s => streams.add(s));
+        } else {
+          streamWrap.style.display = 'none';
+        }
+      } else if (currentStage !== 'الطور المتوسط') {
+        streamWrap.style.display = 'block';
+        Object.values(CURRICULUM["الطور الثانوي"]).forEach(yObj => {
+          Object.keys(yObj).forEach(s => streams.add(s));
+        });
+      }
+
+      streamSel.innerHTML = '<option value="ALL">جميع الشعب والجذوع</option>' +
+        Array.from(streams).map(s => `<option value="${s}">${s}</option>`).join('');
+
+      populateSubjectFilter();
+    }
+
+    function populateSubjectFilter() {
+      const yearVal = document.getElementById('f-year').value;
+      const streamVal = document.getElementById('f-stream').value;
+      const subjectSel = document.getElementById('f-subject');
+
+      let subjects = new Set();
+      if (currentStage === 'ALL' || currentStage === 'الطور الثانوي') {
+        Object.entries(CURRICULUM["الطور الثانوي"]).forEach(([yKey, sObj]) => {
+          if (yearVal === 'ALL' || yearVal === yKey) {
+            Object.entries(sObj).forEach(([sKey, subList]) => {
+              if (streamVal === 'ALL' || streamVal === sKey) {
+                subList.forEach(sub => subjects.add(sub));
+              }
+            });
+          }
+        });
+      }
+
+      if (currentStage === 'ALL' || currentStage === 'الطور المتوسط') {
+        Object.entries(CURRICULUM["الطور المتوسط"]).forEach(([yKey, subList]) => {
+          if (yearVal === 'ALL' || yearVal === yKey) {
+            subList.forEach(sub => subjects.add(sub));
+          }
+        });
+      }
+
+      subjectSel.innerHTML = '<option value="ALL">جميع المواد الدراسية</option>' +
+        Array.from(subjects).map(sub => `<option value="${sub}">${sub}</option>`).join('');
+    }
+
+    window.selectStage = function(stage) {
+      currentStage = stage;
+      document.querySelectorAll('.stage-pill').forEach(el => {
+        el.classList.toggle('active', el.dataset.stage === stage);
+      });
+      initFilterSelects();
+      refreshCurrentView();
+    };
+
+    window.onYearChange = function() {
+      populateStreamFilter();
+      refreshCurrentView();
+    };
+
+    window.onStreamChange = function() {
+      populateSubjectFilter();
+      refreshCurrentView();
+    };
+
+    window.resetFilters = function() {
+      document.getElementById('f-search').value = '';
+      document.getElementById('f-term').value = 'ALL';
+      selectStage('ALL');
+    };
+
+    window.refreshCurrentView = function() {
+      renderStudyPlans();
+      renderStoreProducts();
+      renderLibraryView();
+    };
+
+    // Cloud Wallet Sync Save & Restore
+    async function syncWalletToCloud() {
+      try {
+        await setDoc(doc(db, 'wallets', syncId), {
+          syncId: syncId,
+          unlockedItems: unlockedItems,
+          completedTasks: completedTasks,
+          memorizeList: memorizeList,
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+      } catch (e) {}
+    }
+
+    window.copySyncId = function() {
+      navigator.clipboard.writeText(syncId);
+      showToast(`تم نسخ كود محفظتك (${syncId}) 📋 احتفظ به لاسترجاع مشترياتك وتقدمك دائماً!`);
+    };
+
+    window.openRestoreSyncModal = function() {
+      document.getElementById('sync-modal').classList.add('active');
+    };
+
+    window.restoreStudentWallet = async function() {
+      const code = document.getElementById('restore-sync-input').value.trim().toUpperCase();
+      if (!code) return;
+      try {
+        const snap = await getDoc(doc(db, 'wallets', code));
+        if (!snap.exists()) {
+          showToast('❌ لم يتم العثور على محفظة بهذا الكود، تأكد من كتابته بشكل صحيح.');
+          return;
+        }
+        const data = snap.data();
+        syncId = code;
+        localStorage.setItem('dz_sync_id', syncId);
+        document.getElementById('my-sync-id').textContent = syncId;
+
+        unlockedItems = { ...unlockedItems, ...(data.unlockedItems || {}) };
+        completedTasks = { ...completedTasks, ...(data.completedTasks || {}) };
+        if (data.memorizeList && data.memorizeList.length > 0) {
+          memorizeList = data.memorizeList;
+        }
+
+        localStorage.setItem('dz_unlocked_items', JSON.stringify(unlockedItems));
+        localStorage.setItem('dz_completed_tasks', JSON.stringify(completedTasks));
+        localStorage.setItem('dz_memorize_list', JSON.stringify(memorizeList));
+
+        closeModal('sync-modal');
+        refreshCurrentView();
+        renderMemorizeTable();
+        showToast('✅ تم استرجاع جميع خططك وملخصاتك وتقدمك الدراسي بنجاح!');
+      } catch (e) {
+        showToast('حدث خطأ أثناء الاسترداد');
+      }
+    };
+
+    // Real-time Firestore Listeners
+    // 1. Study Plans Listener
+    onSnapshot(collection(db, 'studyPlans'), (snap) => {
+      studyPlans = [];
+      snap.forEach(d => {
+        const plan = { id: d.id, ...d.data() };
+        const stockNum = typeof plan.stock === 'number' ? plan.stock : parseInt(plan.stock ?? 100);
+        if (plan.available !== false && stockNum > 0) {
+          plan.stock = stockNum;
+          studyPlans.push(plan);
+        }
+      });
+      renderStudyPlans();
+      renderLibraryView();
+    });
+
+    // 2. Standalone Summaries Store Listener
+    onSnapshot(collection(db, 'products'), (snap) => {
+      summariesList = [];
+      snap.forEach(d => {
+        const p = { id: d.id, ...d.data() };
+        const stockNum = typeof p.stock === 'number' ? p.stock : parseInt(p.stock || 0);
+        if (p.available !== false && stockNum > 0) {
+          p.stock = stockNum;
+          summariesList.push(p);
+        }
+      });
+      document.getElementById('store-count-badge').textContent = summariesList.length;
+      renderStoreProducts();
+      renderLibraryView();
+    });
+
+    // 3. Orders Listener (Auto unlocks Plan or Summary when Admin confirms receipt)
+    const ordQ = query(collection(db, 'orders'), where('sessionId', '==', sessionId));
+    onSnapshot(ordQ, (snap) => {
+      myOrders = [];
+      let newlyUnlocked = false;
+      snap.forEach(d => {
+        const o = { id: d.id, ...d.data() };
+        myOrders.push(o);
+        if ((o.status === 'confirmed' || o.status === 'تم التأكيد والإرسال ✅') && o.targetId) {
+          if (!unlockedItems[o.targetId]) {
+            unlockedItems[o.targetId] = {
+              id: o.targetId,
+              type: o.itemType || 'product',
+              title: o.productTitle || 'محتوى مفعل',
+              pdfUrl: o.pdfUrl || '',
+              unlockedAt: Date.now()
+            };
+            newlyUnlocked = true;
+          }
+        }
+      });
+      if (newlyUnlocked) {
+        localStorage.setItem('dz_unlocked_items', JSON.stringify(unlockedItems));
+        syncWalletToCloud();
+      }
+      myOrders.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+      refreshCurrentView();
+    });
+
+    // Load Payment Settings
+    async function loadPaymentSettings() {
+      try {
+        const snap = await getDoc(doc(db, 'settings', 'payment'));
+        if (snap.exists()) {
+          const d = snap.data();
+          if (d.ccp) document.getElementById('pay-ccp-text').textContent = d.ccp;
+          if (d.rip) document.getElementById('pay-rip-text').textContent = d.rip;
+          if (d.note) document.getElementById('pay-note-text').textContent = d.note;
+        }
+      } catch (e) {}
+    }
+    loadPaymentSettings();
+
+    // Render Interactive Study Plans & Periods
+    function renderStudyPlans() {
+      const container = document.getElementById('plans-container');
+      const searchVal = document.getElementById('f-search').value.trim().toLowerCase();
+      const yearVal = document.getElementById('f-year').value;
+      const streamVal = document.getElementById('f-stream').value;
+      const subjectVal = document.getElementById('f-subject').value;
+      const termVal = document.getElementById('f-term').value;
+
+      const filtered = studyPlans.filter(plan => {
+        if (currentStage !== 'ALL' && plan.stage !== currentStage) return false;
+        if (yearVal !== 'ALL' && plan.year !== yearVal) return false;
+        if (streamVal !== 'ALL' && plan.stream && plan.stream !== streamVal && plan.stream !== 'جميع الشعب') return false;
+        if (subjectVal !== 'ALL' && plan.subject !== subjectVal) return false;
+        if (termVal !== 'ALL' && plan.term !== termVal) return false;
+        if (searchVal) {
+          const hay = `${plan.title || ''} ${plan.subject || ''} ${plan.year || ''} ${plan.stream || ''}`.toLowerCase();
+          if (!hay.includes(searchVal)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('planner-heading').textContent = `📅 خطط تنظيم العمل والفترات (${filtered.length})`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="background:white; border-radius:16px; padding:3rem 1rem; text-align:center; border:1px dashed var(--border); color:var(--gray);">
+            <h3 style="margin-bottom:0.4rem;">لا توجد خطط تنظيم مضافة في هذا الفلتر حالياً</h3>
+            <p>يمكنك تغيير الفلتر في الأعلى أو تصفح متجر الملخصات والغرف الذكية.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(plan => {
+        const isPlanUnlocked = Boolean(unlockedItems[plan.id]);
+        const periods = Array.isArray(plan.periods) ? plan.periods : [];
+
+        // Calculate student progress percentage for this plan
+        let totalTasksCount = 0;
+        let doneTasksCount = 0;
+        periods.forEach((per, pIdx) => {
+          const tasks = Array.isArray(per.tasks) ? per.tasks : [];
+          tasks.forEach((t, tIdx) => {
+            totalTasksCount++;
+            const taskKey = `${plan.id}_p${pIdx}_t${tIdx}`;
+            if (completedTasks[taskKey]) doneTasksCount++;
+          });
+        });
+        const progressPct = totalTasksCount > 0 ? Math.round((doneTasksCount / totalTasksCount) * 100) : 0;
+
+        return `
+          <div class="plan-card">
+            <div class="plan-header">
+              <div>
+                <div class="plan-tags">
+                  <span class="tag primary">${plan.year || ''}</span>
+                  ${plan.stream ? `<span class="tag info">🧭 ${plan.stream}</span>` : ''}
+                  <span class="tag warn">📖 ${plan.subject || ''}</span>
+                  <span class="tag">${plan.term || 'الفصل الأول'}</span>
+                  ${isPlanUnlocked 
+                    ? `<span class="tag success">🔓 الخطة الكاملة مفتوحة لديك</span>`
+                    : `<span class="tag" style="background:#fee2e2; color:#991b1b;">🔥 متبقي ${plan.stock} مقعد/نسخة</span>`
+                  }
+                </div>
+                <h3 style="font-size:1.22rem; font-weight:900; color:var(--dark);">${plan.title}</h3>
+                <p style="font-size:0.86rem; color:var(--gray); font-weight:600;">${plan.desc || 'خطة عمل مفصلة مقسمة إلى فترات زمنية مع الدروس والملخصات وسلاسل التمارين والحلول المشروطة.'}</p>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                <div class="progress-wrap">
+                  <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:900;">
+                    <span>📊 نسبة إنجازك في الخطة:</span>
+                    <span style="color:var(--primary-dark);">${progressPct}% (${doneTasksCount}/${totalTasksCount})</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width:${progressPct}%;"></div>
+                  </div>
+                </div>
+
+                ${!isPlanUnlocked ? `
+                  <button class="btn btn-primary" style="padding:0.75rem 1.2rem; font-size:0.92rem;" onclick="openBuyModal('${plan.id}', 'plan')">
+                    🔓 فتح جميع فترات الخطة (${plan.price} د.ج)
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+
+            <div class="periods-container">
+              ${periods.map((per, pIdx) => {
+                // Period 1 (index 0) or explicitly marked isFree is FREE for everyone as marketing hook
+                const isPeriodOpen = isPlanUnlocked || per.isFree === true || pIdx === 0;
+                const tasks = Array.isArray(per.tasks) ? per.tasks : [];
+
+                return `
+                  <div class="period-box ${isPeriodOpen ? '' : 'locked'}">
+                    <div class="period-top">
+                      <div class="period-title">
+                        <span>${isPeriodOpen ? '🟢' : '🔒'}</span>
+                        <span>${per.name || `الفترة ${pIdx + 1}`}</span>
+                        ${(per.isFree || pIdx === 0) && !isPlanUnlocked ? `<span class="tag success">🆓 فترة مجانية للتجربة</span>` : ''}
+                      </div>
+
+                      ${!isPeriodOpen ? `
+                        <button class="btn btn-warning" onclick="openBuyModal('${plan.id}', 'plan')">
+                          🔑 افتح هذه الفترة وباقي الخطة (كود تفعيل / وصل)
+                        </button>
+                      ` : `<span style="font-size:0.8rem; font-weight:800; color:var(--success);">✅ متاحة للدراسة الآن</span>`}
+                    </div>
+
+                    ${isPeriodOpen ? `
+                      <div class="period-body">
+                        ${per.trapNote ? `
+                          <div class="trap-alert">
+                            ⚠️ <strong>فخاخ الامتحان وتنبيه الأستاذ في هذه الفترة:</strong> ${per.trapNote}
+                          </div>
+                        ` : ''}
+
+                        ${tasks.map((t, tIdx) => {
+                          const taskKey = `${plan.id}_p${pIdx}_t${tIdx}`;
+                          const isDone = Boolean(completedTasks[taskKey]);
+                          return `
+                            <div class="task-row ${isDone ? 'completed' : ''}">
+                              <div class="task-left">
+                                <input type="checkbox" class="task-check" ${isDone ? 'checked' : ''} onchange="toggleTaskDone('${taskKey}')">
+                                <div>
+                                  <div style="font-weight:800; font-size:0.93rem; ${isDone ? 'text-decoration:line-through; color:var(--gray);' : ''}">
+                                    ${t.title || `المهمة ${tIdx + 1}`}
+                                  </div>
+                                  ${t.timeRange ? `<div style="font-size:0.78rem; color:var(--primary-dark); font-weight:700;">⏱️ التوقيت المطلوب: ${t.timeRange}</div>` : ''}
+                                </div>
+                              </div>
+
+                              <div class="task-actions">
+                                ${t.youtubeUrl ? `
+                                  <button class="btn btn-primary" onclick="openTaskInFocusRoom('${escapeQuotes(t.title)}', '${escapeQuotes(t.youtubeUrl)}', '${escapeQuotes(t.summaryPdf || '')}', '${escapeQuotes(t.exercisePdf || '')}')">
+                                    🎥 مشاهدة الدرس في غرفة التركيز
+                                  </button>
+                                ` : ''}
+
+                                ${t.summaryPdf ? `
+                                  <a href="${t.summaryPdf}" target="_blank" class="btn btn-info">
+                                    📄 ملخص الدرس (PDF)
+                                  </a>
+                                ` : ''}
+
+                                ${t.exercisePdf ? `
+                                  <a href="${t.exercisePdf}" target="_blank" class="btn btn-outline">
+                                    📝 سلسلة التمارين
+                                  </a>
+                                ` : ''}
+
+                                ${t.solutionPdf ? `
+                                  <button class="btn btn-warning" onclick="requestConditionalSolution('${escapeQuotes(t.solutionPdf)}')">
+                                    🔐 الحل النموذجي المشروط
+                                  </button>
+                                ` : ''}
+                              </div>
+                            </div>
+                          `;
+                        }).join('')}
+                      </div>
+                    ` : `
+                      <div style="padding:1.2rem; text-align:center; color:var(--gray); font-size:0.88rem; font-weight:700;">
+                        🔒 هذه الفترة مقفلة. تحتوي على (${tasks.length} مهام: دروس موجهة، ملخصات، سلاسل تمارين وحلولها النموذجية). اضغط على زر الفتح في الأعلى لتفعيل الخطة الكاملة.
+                      </div>
+                    `}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Mark Task Completed & Sync Progress
+    window.toggleTaskDone = function(taskKey) {
+      if (completedTasks[taskKey]) {
+        delete completedTasks[taskKey];
+      } else {
+        completedTasks[taskKey] = true;
+      }
+      localStorage.setItem('dz_completed_tasks', JSON.stringify(completedTasks));
+      renderStudyPlans();
+      syncWalletToCloud();
+    };
+
+    // Open Lesson inside Smart Focus Room (No YouTube Distractions)
+    function extractYoutubeEmbed(url) {
+      if (!url) return '';
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+      const match = url.match(regExp);
+      const videoId = (match && match[2].length === 11) ? match[2] : null;
+      return videoId ? `https://www.youtube.com/embed/${videoId}?rel=0` : url;
+    }
+
+    window.openTaskInFocusRoom = function(title, ytUrl, summaryPdf, exercisePdf) {
+      switchMainView('focus');
+      const embedUrl = extractYoutubeEmbed(ytUrl);
+      if (embedUrl) {
+        document.getElementById('focus-youtube-iframe').src = embedUrl;
+      }
+      document.getElementById('focus-current-title').textContent = `🎯 تدرس الآن: ${title}`;
+      let linksHtml = '';
+      if (summaryPdf) linksHtml += `<a href="${summaryPdf}" target="_blank" class="btn btn-info">📄 فتح الملخص المرافق</a>`;
+      if (exercisePdf) linksHtml += `<a href="${exercisePdf}" target="_blank" class="btn btn-outline">📝 فتح سلسلة التمارين</a>`;
+      document.getElementById('focus-current-links').innerHTML = linksHtml;
+      showToast('🎧 تم فتح الدرس داخل غرفة التركيز! ابدأ مؤقت بومودورو الآن.');
+    };
+
+    window.loadCustomYoutubeInFocus = function() {
+      const url = document.getElementById('custom-yt-url').value.trim();
+      if (!url) return;
+      document.getElementById('focus-youtube-iframe').src = extractYoutubeEmbed(url);
+      showToast('▶️ تم تشغيل الفيديو بدون تشتيت');
+    };
+
+    // Conditional Solution Modal Logic
+    window.requestConditionalSolution = function(solUrl) {
+      pendingSolutionUrl = solUrl;
+      document.getElementById('pledge-checkbox').checked = false;
+      document.getElementById('solution-modal').classList.add('active');
+    };
+
+    window.confirmOpenSolution = function() {
+      if (!document.getElementById('pledge-checkbox').checked) {
+        showToast('⚠️ يرجى التعليم على مربع التعهد بأنك حاولت في التمرين أولاً!');
+        return;
+      }
+      closeModal('solution-modal');
+      if (pendingSolutionUrl) {
+        window.open(pendingSolutionUrl, '_blank');
+      }
+    };
+
+    // Render Standalone Summaries Store
+    function renderStoreProducts() {
+      const grid = document.getElementById('store-grid');
+      const searchVal = document.getElementById('f-search').value.trim().toLowerCase();
+      const yearVal = document.getElementById('f-year').value;
+      const streamVal = document.getElementById('f-stream').value;
+      const subjectVal = document.getElementById('f-subject').value;
+      const termVal = document.getElementById('f-term').value;
+
+      const filtered = summariesList.filter(p => {
+        if (currentStage !== 'ALL' && p.stage !== currentStage) return false;
+        if (yearVal !== 'ALL' && p.year !== yearVal) return false;
+        if (streamVal !== 'ALL' && p.stream && p.stream !== streamVal && p.stream !== 'جميع الشعب') return false;
+        if (subjectVal !== 'ALL' && p.subject !== subjectVal) return false;
+        if (termVal !== 'ALL' && p.term !== termVal) return false;
+        if (searchVal) {
+          const hay = `${p.title || ''} ${p.subject || ''} ${p.year || ''}`.toLowerCase();
+          if (!hay.includes(searchVal)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('store-heading').textContent = `📚 متجر الملخصات والباقات المستقلة (${filtered.length})`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; background:white; padding:3rem; text-align:center; border-radius:16px; color:var(--gray);">لا توجد ملخصات مستقلة مطابقة للفلتر الحالي.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const isUnlocked = Boolean(unlockedItems[p.id]);
+        const cover = (p.images && p.images[0]) || p.img || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80';
+        return `
+          <div class="product-card">
+            <div class="card-img">
+              <div class="card-badges">
+                <span class="tag primary">${p.year || ''}</span>
+                ${isUnlocked 
+                  ? `<span class="tag success">✅ مفتوح لديك</span>`
+                  : `<span class="tag" style="background:var(--danger); color:white;">🔥 متبقي ${p.stock}</span>`
+                }
+              </div>
+              <img src="${cover}" alt="${p.title}">
+              ${p.previewImg ? `<button class="preview-btn" onclick="openPreview('${p.id}')">👁️ معاينة الصفحة الأولى مجاناً</button>` : ''}
+            </div>
+            <div class="card-body">
+              <div style="display:flex; gap:0.35rem; flex-wrap:wrap; margin-bottom:0.5rem;">
+                <span class="tag info">${p.subject || ''}</span>
+                ${p.stream ? `<span class="tag">${p.stream}</span>` : ''}
+              </div>
+              <h3 style="font-size:1.05rem; font-weight:900; margin-bottom:0.35rem;">${p.title}</h3>
+              <p style="font-size:0.84rem; color:var(--gray); margin-bottom:0.9rem; flex:1;">${p.desc || 'ملخص مركز وشامل جاهز للتحميل بصيغة PDF.'}</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px dashed var(--border); padding-top:0.75rem;">
+                <div>
+                  ${p.oldPrice ? `<span style="text-decoration:line-through; color:var(--danger); font-size:0.78rem; font-weight:700; display:block;">${p.oldPrice} د.ج</span>` : ''}
+                  <strong style="font-size:1.2rem; color:var(--primary-dark); font-weight:900;">${p.price} د.ج</strong>
+                </div>
+                ${isUnlocked ? `
+                  <a href="${unlockedItems[p.id].pdfUrl || p.pdfUrl || '#'}" target="_blank" class="btn btn-success">📥 تحميل PDF</a>
+                ` : `
+                  <button class="btn btn-primary" onclick="openBuyModal('${p.id}', 'product')">🛒 شراء / كود تفعيل</button>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.openPreview = function(prodId) {
+      const p = summariesList.find(x => x.id === prodId);
+      if (!p) return;
+      document.getElementById('preview-title').textContent = `👁️ معاينة مجانية: ${p.title}`;
+      document.getElementById('preview-body').innerHTML = `<img src="${p.previewImg || p.img}" style="max-width:100%; border-radius:12px;">`;
+      document.getElementById('preview-modal').classList.add('active');
+    };
+
+    // Render Student Library & Orders
+    function renderLibraryView() {
+      const container = document.getElementById('my-library-list');
+      const keys = Object.keys(unlockedItems);
+      document.getElementById('unlocked-count-badge').textContent = keys.length;
+
+      let html = '';
+      keys.forEach(k => {
+        const item = unlockedItems[k];
+        html += `
+          <div style="background:#ecfdf5; border:1px solid #6ee7b7; border-right:5px solid var(--success); border-radius:12px; padding:1rem; margin-bottom:0.75rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+            <div>
+              <strong style="color:#065f46; font-size:1rem;">🔓 ${item.title}</strong>
+              <div style="font-size:0.8rem; color:#047857; font-weight:700;">مفعل بشكل دائم في محفظتك (${syncId})</div>
+            </div>
+            ${item.type === 'plan' ? `
+              <button class="btn btn-primary" onclick="switchMainView('planner')">📅 الذهاب لخطة التنظيم</button>
+            ` : item.pdfUrl ? `
+              <a href="${item.pdfUrl}" target="_blank" class="btn btn-success">📥 فتح وتحميل الـ PDF</a>
+            ` : ''}
+          </div>
+        `;
+      });
+
+      myOrders.forEach(o => {
+        const isConf = o.status === 'confirmed' || o.status === 'تم التأكيد والإرسال ✅';
+        const isRej = o.status === 'rejected' || o.status === 'مرفوض ❌';
+        html += `
+          <div style="background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:1rem; margin-bottom:0.75rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+            <div>
+              <strong>🧾 طلب: ${o.productTitle} (الكمية: ${o.quantity || 1})</strong>
+              <div style="font-size:0.8rem; color:var(--gray); font-weight:700;">الإجمالي: ${o.totalPrice} د.ج | الاستلام: ${o.deliveryType}</div>
+            </div>
+            <span class="tag ${isConf ? 'success' : (isRej ? '' : 'warn')}" style="${isRej ? 'background:#fee2e2; color:#991b1b;' : ''}">
+              ${isConf ? 'تم التأكيد والتفعيل ✅' : (isRej ? 'تم رفض الوصل ❌' : '⏳ قيد مراجعة الوصل...')}
+            </span>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html || `<p style="color:var(--gray); text-align:center; padding:2rem;">لا توجد خطط أو ملخصات مفعلة بعد. يمكنك تجربة الفترة الأولى مجاناً في أي خطة!</p>`;
+    }
+
+    // Buy & VIP Unlock Modal Logic
+    window.openBuyModal = function(targetId, type) {
+      const sourceArr = type === 'plan' ? studyPlans : summariesList;
+      const item = sourceArr.find(x => x.id === targetId);
+      if (!item) return;
+
+      activeBuyTarget = { ...item, itemType: type };
+      document.getElementById('buy-item-title').textContent = item.title;
+      document.getElementById('buy-item-sub').textContent = `${item.year || ''} • ${item.subject || ''}`;
+      document.getElementById('buy-item-price').textContent = `${item.price} د.ج`;
+
+      const qtyInp = document.getElementById('o-qty');
+      qtyInp.max = item.stock || 1;
+      qtyInp.value = 1;
+      document.getElementById('o-max-stock').textContent = item.stock || 1;
+
+      if (studentName) document.getElementById('o-name').value = studentName;
+      capturedGpsUrl = '';
+      document.getElementById('gps-feedback').style.display = 'none';
+      recalcOrderTotal();
+      toggleBuyMethod('receipt');
+      document.getElementById('buy-modal').classList.add('active');
+    };
+
+    window.toggleBuyMethod = function(method) {
+      const isRec = method === 'receipt';
+      document.getElementById('buy-receipt-pane').style.display = isRec ? 'block' : 'none';
+      document.getElementById('buy-vip-pane').style.display = isRec ? 'none' : 'block';
+      document.getElementById('tab-btn-receipt').className = isRec ? 'btn btn-primary' : 'btn btn-outline';
+      document.getElementById('tab-btn-vip').className = !isRec ? 'btn btn-primary' : 'btn btn-outline';
+    };
+
+    window.recalcOrderTotal = function() {
+      if (!activeBuyTarget) return;
+      const qtyInp = document.getElementById('o-qty');
+      let q = parseInt(qtyInp.value || 1);
+      if (q < 1) q = 1;
+      if (q > activeBuyTarget.stock) q = activeBuyTarget.stock;
+      qtyInp.value = q;
+
+      const deliv = document.getElementById('o-delivery').value;
+      const ship = deliv.includes('ورقية') ? parseInt(activeBuyTarget.shippingPrice || 400) : 0;
+      const total = (parseInt(activeBuyTarget.price || 0) * q) + ship;
+      document.getElementById('o-total-price').textContent = `${total} د.ج`;
+    };
+
+    window.captureGPS = function() {
+      const fb = document.getElementById('gps-feedback');
+      if (!navigator.geolocation) {
+        showToast('متصفحك لا يدعم GPS');
+        return;
+      }
+      fb.style.display = 'block';
+      fb.textContent = '⏳ جاري تحديد موقعك...';
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          capturedGpsUrl = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+          fb.textContent = 'تم تحديد موقعك الجغرافي بنجاح ✅';
+        },
+        () => {
+          fb.textContent = '⚠️ تعذر التقاط الموقع، يمكنك الإرسال بدونه.';
+        }
+      );
+    };
+
+    function compressImage(file, maxW = 750, qual = 0.68) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let w = img.width, h = img.height;
+            if (w > maxW) { h = Math.round((h * maxW) / w); w = maxW; }
+            canvas.width = w; canvas.height = h;
+            canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', qual));
+          };
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    window.submitOrderForm = async function(e) {
+      e.preventDefault();
+      if (!activeBuyTarget) return;
+      const fileInp = document.getElementById('o-receipt');
+      if (!fileInp.files || !fileInp.files[0]) {
+        showToast('يرجى إرفاق صورة وصل الدفع');
+        return;
+      }
+
+      const btn = document.getElementById('o-submit-btn');
+      btn.disabled = true;
+      btn.textContent = '⏳ جاري رفع الوصل وإرسال الطلب...';
+
+      try {
+        const receiptB64 = await compressImage(fileInp.files[0]);
+        const nameVal = document.getElementById('o-name').value.trim();
+        const phoneVal = document.getElementById('o-phone').value.trim();
+        const wilayaVal = document.getElementById('o-wilaya').value;
+        const delivVal = document.getElementById('o-delivery').value;
+        const qtyVal = parseInt(document.getElementById('o-qty').value || 1);
+        const ship = delivVal.includes('ورقية') ? parseInt(activeBuyTarget.shippingPrice || 400) : 0;
+        const total = (parseInt(activeBuyTarget.price || 0) * qtyVal) + ship;
+
+        studentName = nameVal;
+        localStorage.setItem('dz_student_name', studentName);
+
+        await addDoc(collection(db, 'orders'), {
+          targetId: activeBuyTarget.id,
+          productId: activeBuyTarget.id,
+          itemType: activeBuyTarget.itemType,
+          productTitle: activeBuyTarget.title,
+          pdfUrl: activeBuyTarget.pdfUrl || '',
+          customerName: nameVal,
+          phone: phoneVal,
+          wilaya: wilayaVal,
+          deliveryType: delivVal,
+          quantity: qtyVal,
+          totalPrice: total,
+          locationUrl: capturedGpsUrl,
+          receiptImg: receiptB64,
+          sessionId: sessionId,
+          syncId: syncId,
+          status: 'pending',
+          stockDeducted: false,
+          createdAt: serverTimestamp()
+        });
+
+        closeModal('buy-modal');
+        document.getElementById('order-form').reset();
+        showToast('🎉 تم إرسال وصل الدفع! سيفتح المحتوى تلقائياً فور تأكيد الأدمن.');
+        switchMainView('purchases');
+      } catch (err) {
+        showToast('حدث خطأ أثناء الإرسال');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '✅ إرسال الوصل وتأكيد الطلب';
+      }
+    };
+
+    // Single-Use VIP Code Verification & Auto Burn
+    async function verifyAndBurnVip(rawCode, specificTarget = null) {
+      const code = rawCode.trim().toUpperCase();
+      if (!code) {
+        showToast('يرجى إدخال الكود أولاً');
+        return;
+      }
+
+      try {
+        const q = query(collection(db, 'vipCodes'), where('code', '==', code));
+        const snap = await getDocs(q);
+        if (snap.empty) {
+          showToast('❌ الكود غير صحيح أو تم استخدامه وحرقه مسبقاً!');
+          return;
+        }
+
+        const codeDoc = snap.docs[0];
+        const cData = codeDoc.data();
+
+        if (specificTarget && cData.targetId && cData.targetId !== 'ALL' && cData.targetId !== specificTarget.id) {
+          showToast('⚠️ هذا الكود مخصص لخطة أو ملخص آخر!');
+          return;
+        }
+
+        const unlockId = cData.targetId || cData.productId || (specificTarget ? specificTarget.id : ('vip_' + Date.now()));
+        const itemType = cData.itemType || (specificTarget ? specificTarget.itemType : 'plan');
+        const title = cData.productTitle || (specificTarget ? specificTarget.title : 'خطة / ملخص مفعل بكود VIP');
+        const pdfUrl = cData.pdfUrl || (specificTarget ? specificTarget.pdfUrl : '');
+
+        // 1. Burn Code immediately
+        await deleteDoc(doc(db, 'vipCodes', codeDoc.id));
+
+        // 2. Deduct 1 from Stock in Firestore
+        const targetCol = itemType === 'plan' ? 'studyPlans' : 'products';
+        const matchedItem = (itemType === 'plan' ? studyPlans : summariesList).find(x => x.id === unlockId);
+        if (matchedItem) {
+          const newStock = Math.max(0, parseInt(matchedItem.stock || 1) - 1);
+          await updateDoc(doc(db, targetCol, matchedItem.id), {
+            stock: newStock,
+            available: newStock > 0
+          });
+        }
+
+        // 3. Save to student's unlocked items & sync wallet
+        unlockedItems[unlockId] = {
+          id: unlockId,
+          type: itemType,
+          title: title,
+          pdfUrl: pdfUrl,
+          unlockedAt: Date.now()
+        };
+        localStorage.setItem('dz_unlocked_items', JSON.stringify(unlockedItems));
+        await syncWalletToCloud();
+
+        closeModal('buy-modal');
+        refreshCurrentView();
+        showToast('✅ تم تفعيل الكود بنجاح وحرقه! المحتوى مفتوح لديك الآن.');
+        if (pdfUrl && itemType !== 'plan') {
+          window.open(pdfUrl, '_blank');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('تعذر التحقق من الكود');
+      }
+    }
+
+    window.redeemVipCodeGlobal = function() {
+      const inp = document.getElementById('global-vip-code');
+      verifyAndBurnVip(inp.value, null);
+      inp.value = '';
+    };
+
+    window.redeemVipFromModal = function() {
+      const inp = document.getElementById('modal-vip-input');
+      verifyAndBurnVip(inp.value, activeBuyTarget);
+      inp.value = '';
+    };
+
+    // Pomodoro Timer & Focus Room Notes
+    let pomoSeconds = 50 * 60;
+    let pomoInterval = null;
+
+    function updatePomoDisplay() {
+      const m = String(Math.floor(pomoSeconds / 60)).padStart(2, '0');
+      const s = String(pomoSeconds % 60).padStart(2, '0');
+      document.getElementById('pomo-display').textContent = `${m}:${s}`;
+    }
+
+    window.startPomodoro = function() {
+      if (pomoInterval) return;
+      pomoInterval = setInterval(() => {
+        if (pomoSeconds > 0) {
+          pomoSeconds--;
+          updatePomoDisplay();
+        } else {
+          clearInterval(pomoInterval);
+          pomoInterval = null;
+          showToast('⏰ انتهى وقت الجلسة! خذ قسطاً من الراحة.');
+        }
+      }, 1000);
+    };
+
+    window.pausePomodoro = function() {
+      clearInterval(pomoInterval);
+      pomoInterval = null;
+    };
+
+    window.switchPomodoroMode = function(mins) {
+      pausePomodoro();
+      pomoSeconds = mins * 60;
+      document.getElementById('pomo-mode-label').textContent = mins === 50 ? '🔥 وضع الدراسة والتركيز (50 دقيقة)' : '☕ استراحة قصيرة لتجديد النشاط (10 دقائق)';
+      updatePomoDisplay();
+    };
+
+    document.getElementById('student-notes-area').value = localStorage.getItem('dz_focus_notes') || '';
+    window.saveStudentNotes = function() {
+      localStorage.setItem('dz_focus_notes', document.getElementById('student-notes-area').value);
+    };
+    window.clearStudentNotes = function() {
+      if (!confirm('مسح المفكرة؟')) return;
+      document.getElementById('student-notes-area').value = '';
+      localStorage.removeItem('dz_focus_notes');
+    };
+
+    // Spaced Repetition Memorization Tracker & Weekly Schedule
+    function renderMemorizeTable() {
+      const tbody = document.getElementById('memorize-tbody');
+      if (memorizeList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--gray); padding:1.5rem;">أضف دروس الحفظ أو المقالات أو التواريخ في الأعلى لبدء تتبعها.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = memorizeList.map((item, idx) => `
+        <tr style="${item.step3 ? 'background:#f0fdf4;' : ''}">
+          <td><span class="tag info">${escapeHtml(item.subject)}</span></td>
+          <td>${escapeHtml(item.title)}</td>
+          <td><input type="checkbox" class="task-check" ${item.step1 ? 'checked' : ''} onchange="toggleMemStep(${idx}, 'step1')"></td>
+          <td><input type="checkbox" class="task-check" ${item.step2 ? 'checked' : ''} onchange="toggleMemStep(${idx}, 'step2')"></td>
+          <td><input type="checkbox" class="task-check" ${item.step3 ? 'checked' : ''} onchange="toggleMemStep(${idx}, 'step3')"></td>
+          <td><button class="btn btn-danger" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="deleteMemItem(${idx})">حذف</button></td>
+        </tr>
+      `).join('');
+    }
+
+    window.addMemorizeItem = function(e) {
+      e.preventDefault();
+      const sub = document.getElementById('mem-subject').value;
+      const title = document.getElementById('mem-title').value.trim();
+      if (!title) return;
+      memorizeList.push({ subject: sub, title: title, step1: false, step2: false, step3: false });
+      document.getElementById('mem-title').value = '';
+      localStorage.setItem('dz_memorize_list', JSON.stringify(memorizeList));
+      renderMemorizeTable();
+      syncWalletToCloud();
+    };
+
+    window.toggleMemStep = function(idx, stepKey) {
+      memorizeList[idx][stepKey] = !memorizeList[idx][stepKey];
+      localStorage.setItem('dz_memorize_list', JSON.stringify(memorizeList));
+      renderMemorizeTable();
+      syncWalletToCloud();
+    };
+
+    window.deleteMemItem = function(idx) {
+      memorizeList.splice(idx, 1);
+      localStorage.setItem('dz_memorize_list', JSON.stringify(memorizeList));
+      renderMemorizeTable();
+      syncWalletToCloud();
+    };
+
+    window.renderWeeklySchedule = function(mode) {
+      const box = document.getElementById('weekly-schedule-output');
+      if (mode === 'regular') {
+        box.innerHTML = `
+          <table class="tracker-table">
+            <thead>
+              <tr><th>الفترة اليومية</th><th>أيام الدراسة (الأحد - الخميس)</th><th>نهاية الأسبوع (الجمعة والسبت)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>🌅 الفجر (05:00 - 06:30)</td><td>حفظ مركز (شريعة / تاريخ وجغرافيا / فلسفة)</td><td>حفظ ومراجعة ما تم حفظه في الأسبوع</td></tr>
+              <tr><td>🏫 النهار (08:00 - 16:30)</td><td>متابعة الدروس في المؤسسة + تدوين الأفكار</td><td>حل موضوع كامل في مادة أساسية (08:00 - 12:00)</td></tr>
+              <tr><td>🌇 المساء (18:00 - 20:00)</td><td>مادة علمية/أساسية 1 (فهم الدرس + حل 3 تمارين)</td><td>مادة أساسية 2 (سلسلة تمارين شاملة)</td></tr>
+              <tr><td>🌙 الليل (20:45 - 22:15)</td><td>مادة لغات أو مراجعة خفيفة وتحضير الغد</td><td>تقييم التقدم الأسبوعي وإكمال المهام المتأخرة</td></tr>
+            </tbody>
+          </table>
+        `;
+      } else {
+        box.innerHTML = `
+          <table class="tracker-table">
+            <thead>
+              <tr><th>الفترة اليومية</th><th>برنامج المترشح الحر / العطلة المكثفة</th><th>الهدف الإجرائي</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>🌅 الصباح الباكر (06:00 - 08:00)</td><td>حفظ وتثبيت مواد الحفظ والمصطلحات</td><td>الذهن صافٍ 100% للاستيعاب السريع</td></tr>
+              <tr><td>☀️ الضحى (08:30 - 12:00)</td><td>المادة الأساسية الأولى (درس + ملخص + سلسلة تمارين)</td><td>3.5 ساعات تركيز عميق ببومودورو</td></tr>
+              <tr><td>🌤️ بعد الظهر (14:30 - 17:30)</td><td>المادة الأساسية الثانية (حل مواضيع وبكالوريات سابقة)</td><td>التدرب على منهجية الإجابة والوقت</td></tr>
+              <tr><td>🌙 المساء (19:00 - 21:00)</td><td>المواد الأدبية واللغات الأجنبية (منهجية ومقالات)</td><td>ضمان نقاط المعاملات المكملة</td></tr>
+            </tbody>
+          </table>
+        `;
+      }
+    };
+
+    // Official BAC/BEM Average Calculator
+    window.initCalculatorTable = function() {
+      const key = document.getElementById('calc-stream-select').value;
+      const list = COEFFICIENTS[key] || [];
+      const tbody = document.getElementById('calc-tbody');
+
+      tbody.innerHTML = list.map((item, idx) => `
+        <tr>
+          <td>${item.name}</td>
+          <td><span class="tag primary">${item.coef}</span></td>
+          <td>
+            <input type="number" id="calc-mark-${idx}" value="12" min="0" max="20" step="0.25"
+              style="width:90px; padding:0.4rem; border-radius:8px; border:1.5px solid var(--border); font-weight:900; text-align:center;"
+              oninput="recalculateAverage()">
+          </td>
+          <td id="calc-sub-${idx}" style="font-weight:900; color:var(--primary-dark);">0</td>
+        </tr>
+      `).join('');
+      recalculateAverage();
+    };
+
+    window.recalculateAverage = function() {
+      const key = document.getElementById('calc-stream-select').value;
+      const list = COEFFICIENTS[key] || [];
+      let totalCoef = 0;
+      let totalPts = 0;
+
+      list.forEach((item, idx) => {
+        let mark = parseFloat(document.getElementById(`calc-mark-${idx}`).value || 0);
+        if (mark < 0) mark = 0;
+        if (mark > 20) mark = 20;
+        const sub = mark * item.coef;
+        document.getElementById(`calc-sub-${idx}`).textContent = sub.toFixed(2);
+        totalCoef += item.coef;
+        totalPts += sub;
+      });
+
+      const avg = totalCoef > 0 ? (totalPts / totalCoef) : 0;
+      document.getElementById('calc-total-coef').textContent = totalCoef;
+      document.getElementById('calc-total-pts').textContent = totalPts.toFixed(2);
+      document.getElementById('calc-final-avg').textContent = `${avg.toFixed(2)} / 20`;
+
+      const mot = document.getElementById('calc-motivation');
+      if (avg >= 16) mot.textContent = '🌟 تقدير ممتاز! أنت في طريقك لأعلى التخصصات الجامعية بإذن الله.';
+      else if (avg >= 14) mot.textContent = '🔥 تقدير جيد جداً! واصل الالتزام بالفترات والتمارين.';
+      else if (avg >= 10) mot.textContent = '✅ ناجح! يمكنك رفع معدلك أكثر بالتركيز على المواد ذات المعامل العالي.';
+      else mot.textContent = '⚠️ تحتاج لمضاعفة الجهد في المواد الأساسية لتجاوز عتبة الـ 10.';
+    };
+
+    // Strict Chat Protocol (Max 20 chars, 1 msg initially, then 2 msgs per admin reply)
+    const chatQ = query(collection(db, 'chats'), where('sessionId', '==', sessionId));
+    onSnapshot(chatQ, (snap) => {
+      const msgs = [];
+      snap.forEach(d => msgs.push({ id: d.id, ...d.data() }));
+      msgs.sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
+
+      const box = document.getElementById('chat-messages');
+      if (msgs.length === 0) {
+        box.innerHTML = `<div style="text-align:center; color:var(--gray); font-size:0.8rem; margin-top:2rem;">👋 أرسل سؤالك المختصر للأدمن (حد أقصى 20 حرفاً).</div>`;
+      } else {
+        box.innerHTML = msgs.map(m => `
+          <div class="msg-bubble ${m.sender === 'client' ? 'msg-client' : 'msg-admin'}">
+            <div>${escapeHtml(m.text)}</div>
+            <small style="font-size:0.65rem; opacity:0.75;">${m.sender === 'client' ? (m.clientName || 'أنت') : '👨‍🏫 الأدمن'}</small>
+          </div>
+        `).join('');
+        box.scrollTop = box.scrollHeight;
+      }
+
+      enforceStrictChatRules(msgs);
+    });
+
+    function enforceStrictChatRules(msgs) {
+      const inp = document.getElementById('chat-msg-input');
+      const btn = document.getElementById('chat-send-btn');
+      const banner = document.getElementById('chat-rule-banner');
+      document.getElementById('chat-name-box').style.display = studentName ? 'none' : 'block';
+
+      const hasAdminReply = msgs.some(m => m.sender === 'admin');
+      if (!hasAdminReply) {
+        const clientCount = msgs.filter(m => m.sender === 'client').length;
+        if (clientCount >= 1) {
+          chatCanSend = false;
+          inp.disabled = true;
+          btn.disabled = true;
+          inp.value = '';
+          inp.placeholder = 'انتظر رد الأدمن لتتمكن من المراسلة...';
+          banner.textContent = '🔒 أرسلت رسالتك الأولى، انتظر رد الأدمن لفتح المحادثة.';
+        } else {
+          chatCanSend = true;
+          inp.disabled = false;
+          btn.disabled = false;
+          inp.placeholder = 'اكتب رسالتك الأولى (أقصى حد 20 حرف)...';
+          banner.textContent = '🟢 مسموح لك بإرسال رسالة واحدة (1) لفتح المحادثة.';
+        }
+      } else {
+        let lastAdminIdx = -1;
+        msgs.forEach((m, i) => { if (m.sender === 'admin') lastAdminIdx = i; });
+        const afterCount = msgs.slice(lastAdminIdx + 1).filter(m => m.sender === 'client').length;
+        const rem = 2 - afterCount;
+
+        if (rem <= 0) {
+          chatCanSend = false;
+          inp.disabled = true;
+          btn.disabled = true;
+          inp.value = '';
+          inp.placeholder = 'يرجى انتظار رد الأدمن لإرسال المزيد...';
+          banner.textContent = '🔒 أرسلت رسالتين (2/2). انتظر رد الأدمن الجديد.';
+        } else {
+          chatCanSend = true;
+          inp.disabled = false;
+          btn.disabled = false;
+          inp.placeholder = `اكتب رسالتك (متبقي ${rem} من 2)...`;
+          banner.textContent = `🟢 رد الأدمن! مسموح لك بإرسال (${rem}) رسالة الآن.`;
+        }
+      }
+    }
+
+    window.updateChatCounter = function() {
+      const inp = document.getElementById('chat-msg-input');
+      if (inp.value.length > 20) inp.value = inp.value.substring(0, 20);
+      document.getElementById('chat-char-count').textContent = `${inp.value.length}/20`;
+    };
+
+    window.sendStrictChatMessage = async function(e) {
+      e.preventDefault();
+      if (!chatCanSend) return;
+      const inp = document.getElementById('chat-msg-input');
+      const txt = inp.value.trim();
+      if (!txt || txt.length > 20) return;
+
+      if (!studentName) {
+        const n = document.getElementById('chat-name-input').value.trim();
+        if (!n) {
+          showToast('اكتب اسمك أولاً في الحقل العلوي');
+          return;
+        }
+        studentName = n;
+        localStorage.setItem('dz_student_name', studentName);
+      }
+
+      inp.value = '';
+      updateChatCounter();
+
+      await addDoc(collection(db, 'chats'), {
+        sessionId: sessionId,
+        clientName: studentName,
+        sender: 'client',
+        text: txt.substring(0, 20),
+        createdAt: serverTimestamp()
+      });
+    };
+
+    // View Navigation & Utilities
+    window.switchMainView = function(view) {
+      currentView = view;
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      document.getElementById(`view-${view}`).classList.add('active');
+      document.querySelectorAll('.nav-tab-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.view === view);
+      });
+      document.getElementById('shared-filter-card').style.display = (view === 'planner' || view === 'store') ? 'block' : 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.toggleChat = function() {
+      document.getElementById('chat-widget').classList.toggle('active');
+    };
+
+    window.closeModal = function(id) {
+      document.getElementById(id).classList.remove('active');
+    };
+
+    window.copyTextById = function(id) {
+      const txt = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(txt);
+      showToast('تم النسخ بنجاح 📋');
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 3500);
+    }
+
+    function escapeHtml(str) {
+      return String(str || '').replace(/[&<>"']/g, s => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[s]));
+    }
+
+    function escapeQuotes(str) {
+      return String(str || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    // Boot App
+    initFilterSelects();
+    renderMemorizeTable();
+    renderWeeklySchedule('regular');
+    initCalculatorTable();
+  </script>
+</body>
+</html>
